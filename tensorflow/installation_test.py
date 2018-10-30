@@ -1,6 +1,6 @@
 import tensorflow as tf
 sess = tf.Session()
-hello = tf.constant("Scioabelo")
+hello = tf.constant("Sono un vampiro nato raffinato")
 print(sess.run(hello))
 a = tf.constant(20)
 b = tf.constant(22)
