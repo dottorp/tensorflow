@@ -11,11 +11,6 @@ house_size = np.random.randint(low=1000, high=3500, size=num_house)
 np.random.seed(42)
 house_price = house_size * 100.0 + np.random.randint(low=1000,high=70000, size=num_house) 
 
-#plt.plot(house_size,house_price,"bx")
-#plt.ylabel("Price")
-#plt.xlabel("Size")
-#plt.show()
-
 def normalize(array):
         return (array - array.mean())/array.std()
 num_train_samples = math.floor(num_house*0.7)
@@ -82,21 +77,6 @@ with tf.Session() as sess:
 
         train_price_mean = train_price.mean()
         train_price_std = train_price.std()
-
-    # Plot the graph
-        plt.rcParams["figure.figsize"] = (10,8)
-        plt.figure()
-        plt.ylabel("Price")
-        plt.xlabel("Size (sq.ft)")
-        plt.plot(train_house_size, train_price, 'go', label='Training data')
-        plt.plot(test_house_size, test_house_price, 'mo', label='Testing data')
-        plt.plot(train_house_size_norm * train_house_size_std + train_house_size_mean,
-            (sess.run(tf_size_factor) * train_house_size_norm + sess.run(tf_price_offset)) * train_price_std + train_price_mean,
-            label='Learned Regression')
- 
-        plt.legend(loc='upper left')
-        plt.show()
-
 
 
         # 
